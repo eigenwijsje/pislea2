@@ -1,0 +1,30 @@
+{% extends "convocatorias/convocatoria_base.html" %}
+
+{% block content-header %}
+<h2 class="content-subhead">Convocatorias Contaminadas</h2>
+{% endblock %}
+
+{% block content %}
+{% for convocatoria in object_list %}
+<div class="content">Este es un listado de licitaciones publicadas en el sistema de contrataciones estatales para la administración pública que requieren software privativo</div>
+
+<section class="post">
+    <header class="post-header">
+        <h2 class="post-title"><a href="{{ convocatoria.slug }}">{{ convocatoria.objeto }}</a></h2>
+    </header>
+
+    <div class="post-description">
+        <p>
+            En el departamento de {{ convocatoria.departamento }}, {{ convocatoria.entidad }} ha publicado el
+            {{ convocatoria.publicada }} la convocatoria <a href="{{ convocatoria.slug }}">{{ convocatoria.slug }}</a>.
+        </p>
+        <p>
+            {% if convocatoria.impugnada %}
+            <strong>Esta convocatoria ha sido impugnada el {{ convocatoria.impugnada }}</strong>
+            {% endif %}
+        </p>
+    </div>
+</section>
+{% endfor %}
+
+{% endblock %}

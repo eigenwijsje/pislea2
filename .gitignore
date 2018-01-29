@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+venv/
+seguimiento/convocatorias.json
+seguimiento/seguimiento/db.sqlite3
+seguimiento/files/
+seguimiento/static/

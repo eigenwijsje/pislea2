@@ -1,0 +1,29 @@
+{% extends "convocatorias/convocatoria_base.html" %}
+
+{% block content-header %}
+<h2 class="content-subhead"><a href="/convocatorias">Convocatorias Contaminadas</a></h2>
+{% endblock %}
+
+{% block content %}
+<div class="posts">
+    <section class="post">
+        <header class="post-header">
+            <h2 class="post-title">{{ convocatoria.objeto }}</h2>
+        </header>
+
+        <div class="post-description">
+            <p>
+                En el departamento de {{ convocatoria.departamento }}, {{ convocatoria.entidad }} ha publicado el
+                {{ convocatoria.publicada }} la convocatoria {{ convocatoria.slug }} para
+            <blockquote>&ldquo;{{ convocatoria.objeto }}&rdquo;</blockquote>
+            </p>
+            <p>{{ convocatoria.notas }}</p>
+            <p>
+                {% if convocatoria.impugnada %}
+                <strong>Esta convocatoria ha sido impugnada el {{ convocatoria.impugnada }}</strong>
+                {% endif %}
+            </p>
+        </div>
+    </section>
+</div>
+{% endblock %}
