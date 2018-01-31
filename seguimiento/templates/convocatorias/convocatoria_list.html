@@ -5,9 +5,10 @@
 {% endblock %}
 
 {% block content %}
+<div class="content">Este es un listado de licitaciones publicadas en el sistema de contrataciones estatales para la
+    administración pública que requieren software privativo
+</div>
 {% for convocatoria in object_list %}
-<div class="content">Este es un listado de licitaciones publicadas en el sistema de contrataciones estatales para la administración pública que requieren software privativo</div>
-
 <section class="post">
     <header class="post-header">
         <h2 class="post-title"><a href="{{ convocatoria.slug }}">{{ convocatoria.objeto }}</a></h2>
