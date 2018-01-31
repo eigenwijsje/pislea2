@@ -11,7 +11,7 @@ class ÚltimasConvocatoriasFeed(Feed):
         return Convocatoria.objects.filter(estatus=7)
 
     def item_title(self, item):
-        return '%s - %s: %s' % (item.departmento, item.entidad, item.objeto)
+        return '%s - %s: %s' % (item.departamento, item.entidad, item.objeto)
 
     def item_description(self, item):
         return item.notas

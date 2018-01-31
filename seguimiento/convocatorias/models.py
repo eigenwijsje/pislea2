@@ -46,4 +46,4 @@ class Convocatoria(models.Model):
         return self.objeto
 
     def get_absolute_url(self):
-        return reverse('convocatoria_detail', args=[str(self.cuce)])
+        return reverse('convocatoria_detail', args=[str(self.slug)])
