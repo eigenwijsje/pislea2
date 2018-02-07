@@ -1,20 +1,20 @@
 #####################################################################################################################################
-Próxima fecha clave y seguimiento de la Comunidad de Software Libre al Plan de Implementación de Software Libre y Estándares Abiertos
+Seguimiento de la Comunidad de Software Libre al Plan de Implementación de Software Libre y Estándares Abiertos y Próxima fecha clave
 #####################################################################################################################################
 
-Esta aplicación facilita el seguimiento a las convocatorias nacionales para contrataciones de bienes y de servicios generales y de consultoría publicadas por el SICOES.
+Esta aplicación facilita el seguimiento a las convocatorias nacionales para contrataciones de bienes, de servicios generales y de consultorías, publicadas por el SICOES_, a través del sitio de INFOSICOES_.
 
-La información básica de todas las contrataciones se obtienen con un rastreador con Scrapy.
+La información básica de todas las contrataciones se obtienen con un rastreador con Scrapy_.
 
-Esta información se revisa a través de una aplicación Django donde se determina si es necesario el documento base de contratación para su evaluación.
+Esta información se revisa a través de una aplicación Django_, donde se determina si es necesario el documento base de contratación para su evaluación.
 
-El documento base de contratación es obtenido a través de un comando de Django admin y evaluado manualmente por voluntarios de la Comunidad de Software Libre Bolivia.
+El documento base de contratación es obtenido a través de un comando de Django y evaluado manualmente por voluntarios de la Comunidad de Software Libre Bolivia.
 
 La evaluación determina finalmente si la convocatoria está esta libre de o contaminada por software privativo.
 
 Los resultados de la evaluación son publicados a través de el sitio Web.
 
-Adicionalemte la aplicación muestra la próxima fecha clave en el `Plan de Implementación de Software Libre y Estándares Abiertos`_ de acuerdo al Decreto Supremo 3251 publicado por el Gobierno de Bolivia el 12 de julio de 2017.
+Adicionalmente la aplicación muestra la próxima fecha clave en el `Plan de Implementación de Software Libre y Estándares Abiertos`_ de acuerdo al Decreto Supremo 3251 publicado por el Gobierno de Bolivia el 12 de julio de 2017.
 
 ==============
 Requerimientos
@@ -25,6 +25,54 @@ Requerimientos
     Django==2.0.1
     requests==2.18.4
     Scrapy==1.5.0
+
+===========
+Instalación
+===========
+
+Crear inicialmente y activar un entorno virtual que albergue a los requerimientos del proyecto.
+
+::
+    $ virtualenv -p python3 venv
+    $ source venv/bin/activate
+    (venv) $ pip install -r requirements/base.txt
+
+=========
+Ejecución
+=========
+
+Una vez activado en entorno virtual, se puede ejecutar el rastreador, dentro del subdirectorio ``infosicoes``:
+
+::
+    (venv) $ scrapy runspider infosicoes/spiders/convocatorias.py --nolog -o ../seguimiento/convocatorias.json
+
+La aplicación Django requiere la configuración de la variable de entorno ``DJANGO_SETTINGS_MODULE``:
+
+::
+    (venv) $ export DJANGO_SETTINGS_MODULE=seguimiento.settings.local
+
+Para empezar: crear la base de datos y crear un super usuario, dentro del subirectorio ``seguimiento``:
+
+::
+    (venv) $ ./manage.py migrate
+    (venv) $ ./manage.py createsuperuser
+
+Luego se pueden importar los resultados del rastreador:
+
+::
+    (venv) $ ./manage.py import_convocatorias convocatorias.json
+
+Y para ejecutar la aplicación:
+
+::
+    (venv) $ ./manage.py runserver
+
+Luego de marcar, en la interfaz de administración, convocatorias que necesiten del documento base de contratación para su evaluación, se puede descargar los documentos:
+
+::
+    (venv) $ ./manage.py download_documentos
+
+Finalmente, una vez más en la interfaz de administración, se puede acceder a las convocatorias nuevamente y los documentos estarán disponibles.
 
 ======
 Fechas
@@ -54,3 +102,7 @@ Fechas
 Las fechas están descritas en ``fechas.json``.
 
 .. _Plan de Implementación de Software Libre y Estándares Abiertos: https://www.agetic.gob.bo/#/plan-de-implementacion-de-software-libre-y-estandares-abiertos
+.. _Scrapy: https://scrapy.org/
+.. _Django: http://djangoproject.com/
+.. _SICOES: https://www.sicoes.gob.bo/
+.. _INFOSICOES: https://www.infosicoes.com/
