@@ -13,6 +13,8 @@ class ConvcatoriasSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
+        BASE_URL = 'https://www.infosicoes.com'
+
         for convocatoria in response.css('table > tr'):
             departamento = convocatoria.css('td.celda-entidad > a::text').extract_first()
             entidad = convocatoria.css('td.celda-entidad > h4 > a::text').extract_first()
@@ -22,6 +24,7 @@ class ConvcatoriasSpider(scrapy.Spider):
                 continue
 
             objeto = convocatoria.css('td.celda-objeto > h2 > a::text').extract_first()
+            enlace = convocatoria.css('td.celda-objeto > h2 > a::attr(href)').extract_first()
             tipo, modalidad = map(str.strip, convocatoria.css('td.celda-objeto::text').extract()[1].split('-'))
             estado, publicada, presentada = list(map(str.strip, convocatoria.css('td.celda-estado::text').extract()))
             publicada = datetime.strptime(publicada.split(':')[1].strip(), '%d-%m-%Y').date()
@@ -44,6 +47,7 @@ class ConvcatoriasSpider(scrapy.Spider):
                     entidad=entidad,
                     cuce=cuce,
                     objeto=objeto,
+                    enlace="%s/%s" % (BASE_URL, enlace),
                     tipo=tipo,
                     modalidad=modalidad,
                     publicada=publicada,

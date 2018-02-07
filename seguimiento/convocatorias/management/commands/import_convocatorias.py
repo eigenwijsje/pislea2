@@ -24,6 +24,7 @@ class Command(BaseCommand):
                                         entidad=convocatoria['entidad'],
                                         slug=convocatoria['cuce'],
                                         objeto=convocatoria['objeto'],
+                                        enlace=convocatoria['enlace'],
                                         tipo=convocatoria['tipo'],
                                         modalidad=convocatoria['modalidad'],
                                         añadida=datetime.now(),

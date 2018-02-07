@@ -25,6 +25,9 @@
                 <strong>Esta convocatoria ha sido impugnada el {{ convocatoria.impugnada }}</strong>
                 {% endif %}
             </p>
+            {% if convocatoria.enlace %}
+            <p>Enlace INFOSICOES: <a href="{{ convocatoria.enlace }}">{{ convocatoria.enlace }}</a></p>
+            {% endif %}
         </div>
     </section>
 </div>
