@@ -10,7 +10,7 @@ URL = 'https://www.infosicoes.com/contenido/paginas/procesos/archivo.php'
 
 
 class Command(BaseCommand):
-    help = 'Desacarga los documentos base de contratación requeridos para ser evaluados'
+    help = 'Descarga los documentos base de contratación requeridos para ser evaluados'
 
     def handle(self, *args, **options):
         convocatorias = Convocatoria.objects.filter(estatus=3)  # Requiere documento para su revisión
@@ -33,7 +33,7 @@ class Command(BaseCommand):
                 count += 1
 
                 convocatoria.añadido = datetime.now()
-                convocatoria.estatus = 4  # Docuemento requiere revisión
+                convocatoria.estatus = 4  # Documento requiere revisión
                 convocatoria.save()
 
         self.stdout.write(self.style.SUCCESS('%i documentos descargados' % count))
