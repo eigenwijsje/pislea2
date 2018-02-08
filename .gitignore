@@ -5,3 +5,10 @@ seguimiento/convocatorias.json
 seguimiento/seguimiento/db.sqlite3
 seguimiento/files/
 seguimiento/static/
+
+# archivos extra
+*.priv
+# temporales de emacs
+*~
+\#*\#
+*.\#*
