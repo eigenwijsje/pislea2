@@ -28,7 +28,7 @@ class Convocatoria(models.Model):
     monto_bob = models.DecimalField("Monto Bs.", max_digits=16, decimal_places=2)
     monto_usd = models.DecimalField("Monto $us.", max_digits=16, decimal_places=2)
     monto_eur = models.DecimalField("Monto €", max_digits=16, decimal_places=2)
-    contacto = models.CharField("Contacto", max_length=64)
+    contacto = models.CharField("Contacto", max_length=128)
     documento = models.FileField("D.B.C.", blank=True, upload_to='files')
     arch = models.CharField("D.B.C. Arch", editable=False, max_length=16)
     añadido = models.DateTimeField("D.B.C. añadido", blank=True, editable=False, null=True)
