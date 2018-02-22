@@ -36,4 +36,6 @@ class Command(BaseCommand):
                 convocatoria.estatus = 4  # Documento requiere revisión
                 convocatoria.save()
 
-        self.stdout.write(self.style.SUCCESS('%i documentos descargados' % count))
+        if count > 0:
+            self.stdout.write(self.style.SUCCESS('%i documentos descargados' % count))
+
