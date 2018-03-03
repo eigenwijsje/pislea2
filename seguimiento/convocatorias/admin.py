@@ -31,6 +31,12 @@ class ConvocatoriaAdmin(admin.ModelAdmin):
     save_on_top = True
     search_fields = ('objeto', 'entidad', 'slug')
 
+    def has_add_permission(self, request):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
     def no_necesitan_revisión(self, request, queryset):
         queryset.update(estatus=2)
 
