@@ -7,7 +7,7 @@ from .models import Convocatoria
 @admin.register(Convocatoria)
 class ConvocatoriaAdmin(admin.ModelAdmin):
     actions = ['no_necesitan_revisión', 'requieren_documentos_para_su_revisión']
-    list_display = ('objeto', 'entidad', 'añadida', 'estatus')
+    list_display = ('objeto', 'entidad', 'añadida')
     list_filter = ('departamento', 'tipo', 'estatus')
     fieldsets = [
         (None, {'fields': ['slug', 'departamento', 'entidad', 'tipo', 'modalidad', 'objeto', 'enlace_infosicoes', 'estatus',
