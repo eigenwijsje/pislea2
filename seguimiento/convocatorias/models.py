@@ -11,7 +11,8 @@ class Convocatoria(models.Model):
         (4, "Documento requiere revisión"),
         (5, "Documento en revisión"),
         (6, "Convocatoria libre de software privativo"),
-        (7, "Convocatoria contaminada con software privativo")
+        (7, "Convocatoria contaminada con software privativo"),
+        (8, "Convocatoria es un ejemplo")
     )
     departamento = models.CharField("Departamento", max_length=16)
     entidad = models.CharField("Entidad", max_length=255)

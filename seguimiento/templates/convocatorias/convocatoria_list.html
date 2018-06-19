@@ -1,15 +1,24 @@
 {% extends "convocatorias/convocatoria_base.html" %}
 
 {% block content-header %}
-<h2 class="content-subhead">Convocatorias Contaminadas
-    <a class="pure-button" href="/feed/">Feed</a>
-</h2>
+{% if 'ejemplares' in request.GET %}
+<h2 class="content-subhead"><a href="/convocatorias/">Convocatorias Contaminadas</a> <a class="pure-button" href="/feed/">Feed</a></h2>
+<h2 class="content-subhead">Convocatorias Ejemplares</h2>
+{% else %}
+<h2 class="content-subhead">Convocatorias Contaminadas <a class="pure-button" href="/feed/">Feed</a></h2>
+<h2 class="content-subhead"><a href="/convocatorias/?ejemplares=true">Convocatorias Ejemplares</a></h2>
+{% endif %}
 {% endblock %}
 
 {% block content %}
-<div class="content">Este es un listado de licitaciones publicadas en el sistema de contrataciones estatales para la
-    administración pública que requieren software privativo
+{% if 'ejemplares' in request.GET %}
+<div class="content">Este es un listado de convocatorias publicadas en el sistema de contrataciones estatales para la
+    administración pública que que <b>sí</b> cumplen con las política de Estado y son <b>ejemplares</b>
+{% else %}
+<div class="content">Este es un listado de convocatorias publicadas en el sistema de contrataciones estatales para la
+    administración pública que <b>no</b> cumplen con la política de Estado y <b>requieren software privativo</b>
 </div>
+{% endif %}
 {% for convocatoria in object_list %}
 <section class="post">
     <header class="post-header">

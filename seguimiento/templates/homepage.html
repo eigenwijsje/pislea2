@@ -310,6 +310,9 @@
             <li class="pure-menu-item"><div class="pure-menu-link">Inicio</div></li>
         </ul>
         <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/convocatorias/?ejemplares=true" class="pure-menu-link">Convocatorias Ejemplares</a></li>
+        </ul>
+        <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="/convocatorias" class="pure-menu-link">Convocatorias Contaminadas</a></li>
         </ul>
         <ul class="pure-menu-list">
@@ -330,7 +333,7 @@
             {% elif en_dias == 1 %}
             <b>MAÑANA</b>
             {% else %}
-            en <b>{{ en_dias }}</b> días<br/>
+            en <b style="font-size: xx-large;">{{ en_dias }}</b> días<br/>
             {% endif %}
             {{ quien|safe }} {{ que|safe }}
             {% if quien2 and que2 %}
