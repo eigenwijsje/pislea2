@@ -18,8 +18,8 @@ class Command(BaseCommand):
         count = 0
         for convocatoria in convocatorias:
             response = requests.post(URL, data={'arch': convocatoria.arch})
-            if response.text == 'Limite de descargas excedido!':
-                self.stderr.write(self.style.ERROR(response.text))
+            if response.url == 'https://www.infosicoes.com/limite-de-descargas-excedido.html':
+                self.stderr.write(self.style.ERROR('Limite de descargas excedido!'))
                 break
             if response.ok:
                 filename = response.headers['Content-Disposition'][21:-1]
