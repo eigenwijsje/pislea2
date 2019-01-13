@@ -67,7 +67,8 @@ class PróximaFechaView(TemplateView):
                     quien = fecha['quien']
                     que = fecha['que']
                 if hasta > datetime.now():
-                    context['proxima_fecha'] = dict(hasta=hasta, quien=quien, que=que)
+                    en_días = (hasta - datetime.today()).days
+                    context['proxima_fecha'] = dict(en_dias=en_días, hasta=hasta, quien=quien, que=que)
                     break
 
             return context
