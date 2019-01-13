@@ -20,7 +20,8 @@ ALLOWED_HOSTS = ['pislea.bolivia.bo']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'mysql.connector.django',
+        'HOST': '127.0.0.1',
         'NAME': get_env_variable('DATABASES_NAME'),
         'USER': get_env_variable('DATABASES_USER'),
         'PASSWORD': get_env_variable('DATABASES_PASSWORD'),

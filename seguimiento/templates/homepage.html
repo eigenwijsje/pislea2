@@ -38,24 +38,6 @@
             color: #34495e;
         }
 
-        .pure-img-responsive {
-            max-width: 100%;
-            height: auto;
-        }
-
-        /*
-         * -- LAYOUT STYLES --
-         * These are some useful classes which I will need
-         */
-        .l-box {
-            padding: 1em;
-        }
-
-        .l-box-lrg {
-            padding: 2em;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
         .is-center {
             text-align: center;
         }
@@ -79,27 +61,9 @@
         }
 
         /*
-         * -- PURE BUTTON STYLES --
-         * I want my pure-button elements to look a little different
-         */
-        .pure-button {
-            background-color: #1f8dd6;
-            color: white;
-            padding: 0.5em 2em;
-            border-radius: 5px;
-        }
-
-        a.pure-button-primary {
-            background: white;
-            color: #1f8dd6;
-            border-radius: 5px;
-            font-size: 120%;
-        }
-
-        /*
-         * -- MENU STYLES --
-         * I want to customize how my .pure-menu looks at the top of the page
-         */
+        * -- MENU STYLES --
+        * I want to customize how my .pure-menu looks at the top of the page
+        */
 
         .home-menu {
             padding: 0.5em;
@@ -116,12 +80,6 @@
             border-bottom: none;
             /* I need a higher z-index here because of the scroll-over effect. */
             z-index: 4;
-        }
-
-        .home-menu .pure-menu-heading {
-            color: white;
-            font-weight: 400;
-            font-size: 120%;
         }
 
         .home-menu .pure-menu-selected a {
@@ -217,32 +175,8 @@
             margin: 2em 0 1em;
         }
 
-        /* This is a modifier class used when the content-head is inside a ribbon */
-        .content-head-ribbon {
-            color: white;
-        }
-
-        /* This is the class used for the content sub-headers (<h3>) */
-        .content-subhead {
-            color: #1f8dd6;
-        }
-
         .content-subhead i {
             margin-right: 7px;
-        }
-
-        /* This is the class used for the dark-background areas. */
-        .ribbon {
-            background: #2d3e50;
-            color: #aaa;
-        }
-
-        /* This is the class used for the footer */
-        .footer {
-            background: #111;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
         }
 
         /*
@@ -267,10 +201,6 @@
                 float: right;
             }
 
-            /* We increase the height of the splash-container */
-            /*    .splash-container {
-                    height: 500px;
-                }*/
             /* We decrease the width of the .splash, since we have more width
             to work with */
             .splash {
@@ -281,12 +211,6 @@
             .splash-head {
                 font-size: 250%;
             }
-
-            /* We remove the border-separator assigned to .l-box-lrg */
-            .l-box-lrg {
-                border: none;
-            }
-
         }
 
         /*
@@ -316,7 +240,13 @@
             <li class="pure-menu-item"><a href="/convocatorias" class="pure-menu-link">Convocatorias Contaminadas</a></li>
         </ul>
         <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/planes" class="pure-menu-link">Planes de Implementación</a></li>
+        </ul>
+        <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="/fechas-pasadas" class="pure-menu-link">Fechas pasadas</a></li>
+        </ul>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item"><a href="/proxima-fecha" class="pure-menu-link">Próxima Fecha</a></li>
         </ul>
     </div>
 </div>
@@ -328,16 +258,22 @@
             de Implementación de Software Libre y Estándares Abiertos</a> está en vigencia hace <b>{{ hace_dias }}</b>
             días</p>
         <p class="splash-subhead">
-            {% if en_dias == 0 %}
+            {% if hace_dias2 == 0 %}
             <b>HOY</b>
-            {% elif en_dias == 1 %}
-            <b>MAÑANA</b>
+            {% elif hace_dias2 == 1 %}
+            <b>AYER</b>
             {% else %}
-            en <b style="font-size: xx-large;">{{ en_dias }}</b> días<br/>
+            Hace <b>{{ hace_dias2 }} días</b>
             {% endif %}
-            {{ quien|safe }} {{ que|safe }}
-            {% if quien2 and que2 %}
-            <br/>{{ quien2|safe }} {{ que2|safe }}
+            {{ quien|safe }} {{ que|safe }}.
+        </p>
+        <p class="splash-subhead">
+            {% if publicados == 0 %}
+            <b>Ningún</b> plan ha sido publicado hasta hoy.
+            {% elif publicados == 1 %}
+            <b>Un</b> <a href="/planes">plan</a> ha sido publicado hasta hoy
+            {% else %}
+            {{ publicados }} <a href="/planes">planes</a> han sido publicados hasta hoy.
             {% endif %}
         </p>
     </div>

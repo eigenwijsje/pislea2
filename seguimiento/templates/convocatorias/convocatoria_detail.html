@@ -3,7 +3,8 @@
 {% block title %}Convocatoria CUCE: {{ convocatoria.slug }}{% endblock %}
 
 {% block content-header %}
-<h2 class="content-subhead"><a href="/convocatorias">Convocatorias Contaminadas</a> <a class="pure-button" href="/feed/">Feed</a></h2>
+<h2 class="content-subhead"><a href="/planes/">Planes de Implementación</a></h2>
+<h2 class="content-subhead"><a href="/convocatorias">Convocatorias Contaminadas</a> <a class="pure-button" href="/feed/convocatorias">Feed</a></h2>
 <h2 class="content-subhead"><a href="/convocatorias/?ejemplares=true">Convocatorias Ejemplares</a></h2>
 {% endblock %}
 
@@ -18,8 +19,8 @@
             <p>
                 En el departamento de {{ convocatoria.departamento }}, {{ convocatoria.entidad }} ha publicado el
                 {{ convocatoria.publicada }} la convocatoria {{ convocatoria.slug }} para
-            <blockquote>&ldquo;{{ convocatoria.objeto }}&rdquo;</blockquote>
             </p>
+            <blockquote>&ldquo;{{ convocatoria.objeto }}&rdquo;</blockquote>
             <p>{{ convocatoria.notas }}</p>
             <p>
                 {% if convocatoria.impugnada %}

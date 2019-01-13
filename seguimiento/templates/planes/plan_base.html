@@ -4,17 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Convocatorias {% if 'ejemplares' in request.GET %}Ejemplares{% else %}Contaminadas{% endif %}{% endblock %}</title>
-    <link rel="alternate" href="/feed/convocatorias" title="RSS Feed de Convovatorias" type="application/rss+xml">
-
+    <title>{% block title %}Planes de Implementación {% if 'ejemplares' in request.GET %} Ejemplares{% endif %}{% endblock %}</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" crossorigin="anonymous">
 
     <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
     <!--<![endif]-->
 
     <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="{% static 'convocatorias.css' %}">
+    <link rel="stylesheet" href="{% static 'convocatorias.css' %}">
     <!--<![endif]-->
 </head>
 <body>
@@ -23,7 +21,8 @@
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
             <h2 class="brand-title">Seguimiento SICOES</h2>
-            <h3 class="brand-tagline">Seguimiento por la Comunidad de Software Libre al Plan de Implementación de Software Libre y Estándares Abiertos</h3>
+            <h3 class="brand-tagline">Seguimiento por la Comunidad de Software Libre al Plan de Implementación de Software Libre
+                y Estándares Abiertos</h3>
 
             <nav class="nav">
                 <ul class="nav-list">

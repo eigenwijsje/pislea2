@@ -20,6 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.flatpages',
     'convocatorias',
+    'planes'
 ]
 
 MIDDLEWARE = [

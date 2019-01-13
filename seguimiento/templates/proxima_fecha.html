@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fechas pasadas: Plan de Implementación de Softwae Libre y Estándares Abiertos</title>
+    <title>Próxima Fecha: Plan de Implementación de Softwae Libre y Estándares Abiertos</title>
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"
           integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
 
@@ -187,10 +187,13 @@
 <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><div class="pure-menu-link"><a href="/">Inicio</a></div></li>
+            <li class="pure-menu-item">
+                <li class="pure-menu-item"><a href="/" class="pure-menu-link">Inicio</a></li>
+            </li>
         </ul>
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="/convocatorias/?ejemplares=true" class="pure-menu-link">Convocatorias Ejemplares</a></li>
+            <li class="pure-menu-item"><a href="/convocatorias/?ejemplares=true" class="pure-menu-link">Convocatorias
+                Ejemplares</a></li>
         </ul>
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="/convocatorias" class="pure-menu-link">Convocatorias Contaminadas</a></li>
@@ -199,22 +202,21 @@
             <li class="pure-menu-item"><a href="/planes" class="pure-menu-link">Planes de Implementación</a></li>
         </ul>
         <ul class="pure-menu-list">
-            <li class="pure-menu-item">
-                <div class="pure-menu-link">Fechas pasadas</div></li>
+            <li class="pure-menu-item"><a href="/fechas-pasadas" class="pure-menu-link">Fechas pasadas</a></li>
         </ul>
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="/proxima-fecha" class="pure-menu-link">Próxima Fecha</a></li>
+            <li class="pure-menu-item">
+                <div class="pure-menu-link">Próxima Fecha</div>
+            </li>
         </ul>
     </div>
 </div>
 
 <div class="splash-container">
     <div class="splash">
-        {% for fecha in fechas_pasadas %}
         <p class="splash-subhead">
-            <b>{{ fecha.hasta|date }}</b> {{ fecha.quien }} {{ fecha.que|safe }}
+            <b>{{ proxima_fecha.hasta|date }}</b> {{ proxima_fecha.quien|safe }} {{ proxima_fecha.que|safe }}
         </p>
-        {% endfor %}
     </div>
 </div>
 </body>

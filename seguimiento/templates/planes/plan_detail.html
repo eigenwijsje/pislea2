@@ -1,0 +1,40 @@
+{% extends "planes/plan_base.html" %}
+
+{% block title %}Plan Institucional de Implementación de Software Libre y Estándares Abiertos: {{ plan.entidad }}{% endblock %}
+
+{% block content-header %}
+<h2 class="content-subhead"><a href="/planes/">Planes de Implementación</a></h2>
+<h2 class="content-subhead"><a href="/convocatorias">Convocatorias Contaminadas</a> <a class="pure-button" href="/feed/">Feed</a></h2>
+<h2 class="content-subhead"><a href="/convocatorias/?ejemplares=true">Convocatorias Ejemplares</a></h2>
+{% endblock %}
+
+{% block content %}
+<div class="posts">
+    <section class="post">
+        <header class="post-header">
+            <h2 class="post-title">{{ plan.entidad }}</h2>
+        </header>
+
+        <div class="post-description">
+            <p>
+                {{ plan.entidad }} ha publicado su Plan Institucional de Implementación de Software Libre y Estándares Abiertos
+                el {{ plan.publicado }}.
+            </p>
+            {% if plan.estatus == 5 %}
+            <p>Este plan ha sido revisado el {{ plan.revisado|date }}.</p>
+            {% if plan.comentarios %}
+            <p>{{ plan.comentarios }}</p>
+            {% endif %}
+            {% else %}
+            <p>Este plan no ha sido revisado todavía.</p>
+            {% endif %}
+            {% if plan.documento %}
+            <p><a href="/files/{{ plan.documento }}">Documento</a>.</p>
+            {% endif %}
+            {% if plan.fuente %}
+            <p>Fuente: <a href="{{ plan.fuente }}">{{ plan.fuente }}</a></p>
+            {% endif %}
+        </div>
+    </section>
+</div>
+{% endblock %}
