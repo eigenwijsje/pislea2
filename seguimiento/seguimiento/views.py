@@ -16,7 +16,7 @@ class HomepageView(TemplateView):
             fechas = json.loads(f.read())
 
         context['hace_dias'] = (datetime.today() - datetime(2017, 7, 11)).days
-        context['hace_dias2'] = (datetime.today() - datetime(2019, 1, 10)).days
+        context['hace_dias2'] = (datetime.today() - datetime(2019, 1, 12)).days
         context['quien'] = fechas[4]['quien']
         context['que'] = fechas[4]['que']
         context['publicados'] = Plan.objects.all().count()
