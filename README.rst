@@ -1,6 +1,6 @@
-#####################################################################################################################################
-Seguimiento de la Comunidad de Software Libre al Plan de Implementación de Software Libre y Estándares Abiertos y Próxima fecha clave
-#####################################################################################################################################
+###############################################################################################################
+Seguimiento de la Comunidad de Software Libre al Plan de Implementación de Software Libre y Estándares Abiertos
+###############################################################################################################
 
 Esta aplicación facilita el seguimiento a las convocatorias nacionales para contrataciones de bienes, de servicios generales y de consultorías, publicadas por el SICOES_, a través del sitio de INFOSICOES_.
 
@@ -14,6 +14,8 @@ La evaluación determina finalmente si la convocatoria está esta libre de o con
 
 Los resultados de la evaluación son publicados a través de el sitio Web.
 
+Esta aplicación también facilita el seguimiento y revisión de los Planes Instituionales de Implementación de Software Libre y Estandares Abiertos publicados en el sitio de la AGETIC_ a partir del 12 de enerode 2019.
+ 
 Adicionalmente la aplicación muestra la próxima fecha clave en el `Plan de Implementación de Software Libre y Estándares Abiertos`_ de acuerdo al Decreto Supremo 3251 publicado por el Gobierno de Bolivia el 12 de julio de 2017.
 
 ==============
@@ -113,3 +115,4 @@ Las fechas están descritas en ``fechas.json``.
 .. _Django: http://djangoproject.com/
 .. _SICOES: https://www.sicoes.gob.bo/
 .. _INFOSICOES: https://www.infosicoes.com/
+.. _AGETIC: https://agetic.gob.bo/
