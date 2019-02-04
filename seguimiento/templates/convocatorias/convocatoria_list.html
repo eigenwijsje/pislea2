@@ -3,10 +3,10 @@
 {% block content-header %}
 <h2 class="content-subhead"><a href="/planes/">Planes de Implementación</a></h2>
 {% if 'ejemplares' in request.GET %}
-<h2 class="content-subhead"><a href="/convocatorias/">Convocatorias Contaminadas</a> <a class="pure-button" href="/feed/">Feed</a></h2>
+<h2 class="content-subhead"><a href="/convocatorias/">Convocatorias Contaminadas</a> <a class="pure-button" href="/convocatorias/feed">Feed</a></h2>
 <h2 class="content-subhead">Convocatorias Ejemplares</h2>
 {% else %}
-<h2 class="content-subhead">Convocatorias Contaminadas</h2>
+<h2 class="content-subhead">Convocatorias Contaminadas <a class="pure-button" href="/convocatorias/feed">Feed</a></h2>
 <h2 class="content-subhead"><a href="/convocatorias/?ejemplares=true">Convocatorias Ejemplares</a></h2>
 {% endif %}
 {% endblock %}
