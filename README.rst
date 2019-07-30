@@ -15,7 +15,7 @@ La evaluación determina finalmente si la convocatoria está esta libre de o con
 Los resultados de la evaluación son publicados a través de el sitio Web.
 
 Esta aplicación también facilita el seguimiento y revisión de los Planes Instituionales de Implementación de Software Libre y Estandares Abiertos publicados en el sitio de la AGETIC_ a partir del 12 de enerode 2019.
- 
+
 Adicionalmente la aplicación muestra la próxima fecha clave en el `Plan de Implementación de Software Libre y Estándares Abiertos`_ de acuerdo al Decreto Supremo 3251 publicado por el Gobierno de Bolivia el 12 de julio de 2017.
 
 ==============
@@ -24,9 +24,9 @@ Requerimientos
 
 ::
 
-    Django==2.0.5
-    requests==2.18.4
-    Scrapy==1.5.0
+    Django==2.2.3
+    requests==2.22.0
+    Scrapy==1.7.2
 
 ===========
 Instalación
