@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils import timezone
 from django.utils.html import format_html
 
 from .models import Convocatoria
@@ -14,7 +15,7 @@ class ConvocatoriaAdmin(admin.ModelAdmin):
                            'impugnada', 'notas']}),
         ('D.B.C', {
             'classes': ('collapse',),
-            'fields': ['documento', 'revisor', 'revisado']
+            'fields': ['documento']
         }),
         ('Fechas', {
             'classes': ('collapse',),
@@ -37,12 +38,18 @@ class ConvocatoriaAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
-    def no_necesitan_revisión(self, request, queryset):
+    def save_model(self, request, obj, form, change):
+        obj.revisor = request.user
+        obj.revisado = timezone.now()
+
+        super().save_model(request, obj, form, change)
+
+    def no_necesitan_revisión(self, _, queryset):
         queryset.update(estatus=2)
 
     no_necesitan_revisión.short_description = "Marcar que las Convocatorias seleccionadas no necesitan revisión"
 
-    def requieren_documentos_para_su_revisión(sel, request, queryset):
+    def requieren_documentos_para_su_revisión(self, _, queryset):
         queryset.update(estatus=3)
 
     requieren_documentos_para_su_revisión.short_description = "Marcar que las Convocatorias seleccionadas requieren documentos para su revisión"
