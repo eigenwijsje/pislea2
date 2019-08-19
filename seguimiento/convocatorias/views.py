@@ -10,6 +10,8 @@ class ConvocatoriaView(object):
 
 
 class ConvocatoriaListView(ConvocatoriaView, ListView):
+    paginate_by = 10
+
     def get_queryset(self):
         if 'ejemplares' in self.request.GET:
             queryset = Convocatoria.objects.filter(estatus=8)
