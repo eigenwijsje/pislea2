@@ -1,4 +1,17 @@
 {% extends "convocatorias/convocatoria_base.html" %}
+{% load twitter_cards %}
+
+{% block twitter_cards %}
+    {% if 'ejemplares' in request.GET %}
+        {% with title="Convocatorias Ejemplares" description="Este es un listado de convocatorias publicadas en el sistema de contrataciones estatales para la administración pública que sí cumplen con la política de Estado y son ejemplares." %}
+            {% summary_card title=title description=description %}
+        {% endwith %}
+    {% else %}
+        {% with title="Convocatorias Contaminadas" description="Este es un listado de convocatorias publicadas en el sistema de contrataciones estatales para la administración pública que no cumplen con la política de Estado y requieren software privativo." %}
+            {% summary_card title=title description=description %}
+        {% endwith %}
+    {% endif %}
+{% endblock %}
 
 {% block content-header %}
 <h2 class="content-subhead"><a href="/planes/">Planes de Implementación</a></h2>
@@ -12,8 +25,8 @@
 {% endblock %}
 
 {% block content %}
-    <div class="content">Este es un listado de convocatorias publicadas en el sistema de contrataciones estatales para la
-        administración pública que
+    <div class="content">
+        Este es un listado de convocatorias publicadas en el sistema de contrataciones estatales para la administración pública que
         {% if 'ejemplares' in request.GET %}<b>sí</b>{% else %}<b>no</b>{% endif %}
         cumplen con la política de Estado y
         {% if 'ejemplares' in request.GET %}son <b>ejemplares</b>{% else %}<b>requieren software privativo</b>{% endif %}.
@@ -29,13 +42,26 @@
                 En el departamento de {{ convocatoria.departamento }}, {{ convocatoria.entidad }} ha publicado el
                 {{ convocatoria.publicada }} la convocatoria <a href="{{ convocatoria.slug }}">{{ convocatoria.slug }}</a>.
             </p>
+        {% if convocatoria.impugnada %}
             <p>
-                {% if convocatoria.impugnada %}
                 <strong>Esta convocatoria ha sido impugnada el {{ convocatoria.impugnada }}</strong>
-                {% endif %}
             </p>
+        {% endif %}
         </div>
     </section>
     {% endfor %}
 
-    {% endblock %}
+    {% if is_paginated %}
+    <div class="pure-button-group" role="group" style="text-align: center;">
+        {% for i in paginator.page_range %}
+        <button class="pure-button">
+            {% if page_obj.number == i %}
+            <span>{{ i }}</span>
+            {% else %}
+            <a href="?page={{ i }}">{{ i }}</a>
+            {% endif %}
+        </button>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}

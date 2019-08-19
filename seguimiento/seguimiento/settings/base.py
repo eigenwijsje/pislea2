@@ -83,3 +83,5 @@ STATIC_ROOT = 'static'
 
 MEDIA_URL = '/files/'
 MEDIA_ROOT = 'files'
+
+TWITTER_CARD_SITE = '@nnrcschmdt'

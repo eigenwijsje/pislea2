@@ -4,18 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Convocatorias {% if 'ejemplares' in request.GET %}Ejemplares{% else %}Contaminadas{% endif %}{% endblock %}</title>
-    <link rel="alternate" href="/convocatorias/feed" title="RSS Feed de Convovatorias" type="application/rss+xml">
+    <title>{% block title %}Convocatorias {% if 'ejemplares' in request.GET %}Ejemplares{% else %}Contaminadas{% endif %}{% endblock %} &mdash; Plan de Implementación de Software Libre y Estándares Abiertos</title>
+    <link rel="alternate" href="/convocatorias/feed" title="RSS Feed de Convocatorias" type="application/rss+xml">
+
+    {% block twitter_cards %}
+    {% endblock %}
 
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" crossorigin="anonymous">
-
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
-    <!--<![endif]-->
-
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="{% static 'convocatorias.css' %}">
-    <!--<![endif]-->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
+    <link rel="stylesheet" href="{% static 'convocatorias.css' %}">
 </head>
 <body>
 

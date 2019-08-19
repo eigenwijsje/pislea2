@@ -1,4 +1,11 @@
 {% extends "convocatorias/convocatoria_base.html" %}
+{% load twitter_cards %}
+
+{% block twitter_cards %}
+    {% with title=convocatoria.entidad description=convocatoria.objeto %}
+        {% summary_card title=title description=description %}
+    {% endwith %}
+{% endblock %}
 
 {% block title %}Convocatoria CUCE: {{ convocatoria.slug }}{% endblock %}
 
@@ -22,11 +29,11 @@
             </p>
             <blockquote>&ldquo;{{ convocatoria.objeto }}&rdquo;</blockquote>
             <p>{{ convocatoria.notas }}</p>
+    {% if convocatoria.impugnada %}
             <p>
-                {% if convocatoria.impugnada %}
                 <strong>Esta convocatoria ha sido impugnada el {{ convocatoria.impugnada }}</strong>
-                {% endif %}
             </p>
+    {% endif %}
             {% if convocatoria.enlace %}
             <p>Fuente: <a href="{{ convocatoria.enlace }}">{{ convocatoria.enlace }}</a></p>
             {% endif %}

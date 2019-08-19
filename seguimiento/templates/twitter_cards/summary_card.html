@@ -1,0 +1,12 @@
+{% block card%}
+<meta name="twitter:card" content="summary" />
+    {% if site %}
+<meta name="twitter:site" content="{{ site }}" />
+    {% endif %}
+    {% if title %}
+<meta name="twitter:title" content="{{ title|striptags|slice:'70' }}" />
+    {% endif %}
+    {% if description %}
+<meta name="twitter:description" content="{{ description|striptags|slice:'200' }}" />
+    {% endif %}
+{% endblock %}

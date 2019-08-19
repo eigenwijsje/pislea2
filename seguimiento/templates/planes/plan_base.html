@@ -4,16 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Planes de Implementación {% if 'ejemplares' in request.GET %} Ejemplares{% endif %}{% endblock %}</title>
+    <title>{% block title %}Planes Institucionales de Implementación de Software Libre y Estándares Abiertos{% endblock %}</title>
+
+    {% block twitter_cards %}
+    {% endblock %}
+
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" crossorigin="anonymous">
-
-    <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css">
-    <!--<![endif]-->
-
-    <!--[if gt IE 8]><!-->
     <link rel="stylesheet" href="{% static 'convocatorias.css' %}">
-    <!--<![endif]-->
 </head>
 <body>
 

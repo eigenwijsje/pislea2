@@ -20,20 +20,22 @@
                 {{ plan.entidad }} ha publicado su Plan Institucional de Implementación de Software Libre y Estándares Abiertos
                 el {{ plan.publicado }}.
             </p>
-            {% if plan.estatus == 5 %}
+    {% if plan.estatus == 5 %}
             <p>Este plan ha sido revisado el {{ plan.revisado|date }}.</p>
-            {% if plan.comentarios %}
+        {% if plan.comentarios %}
             <p>{{ plan.comentarios }}</p>
-            {% endif %}
-            {% else %}
+        {% endif %}
+    {% else %}
             <p>Este plan no ha sido revisado todavía.</p>
-            {% endif %}
-            {% if plan.documento %}
+    {% endif %}
+
+    {% if plan.documento %}
             <p><a href="/files/{{ plan.documento }}">Documento</a>.</p>
-            {% endif %}
-            {% if plan.fuente %}
+    {% endif %}
+
+    {% if plan.fuente %}
             <p>Fuente: <a href="{{ plan.fuente }}">{{ plan.fuente }}</a></p>
-            {% endif %}
+    {% endif %}
         </div>
     </section>
 </div>

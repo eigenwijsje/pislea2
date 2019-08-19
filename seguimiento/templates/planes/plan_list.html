@@ -1,5 +1,13 @@
 {% extends "planes/plan_base.html" %}
 
+{% load twitter_cards %}
+
+{% block twitter_cards %}
+    {% with title="Planes Institucionales de Implementación de Software Libre y Estándares Abiertos" description="Hasta ahora no se ha publicado ningún Plan Institucional de Implementación de Software Libre y Estándares Abiertos en el sitio Web de la AGETIC" %}
+        {% summary_card title=title description=description %}
+    {% endwith %}
+{% endblock %}
+
 {% block content-header %}
 <h2 class="content-subhead">Planes de Implementación</h2>
 <h2 class="content-subhead"><a href="/convocatorias">Convocatorias Contaminadas</a> <a class="pure-button" href="/convocatorias/feed">Feed</a></h2>
@@ -7,12 +15,12 @@
 {% endblock %}
 
 {% block content %}
-{% if object_list %}
+    {% if object_list %}
 <div class="content">
     Este es un listado de Planes Institucionales de Implementación de Software Libre y Estándares Abiertos publicados en el
     sitio Web de la <a href="https://agetic.gob.bo">AGETIC</a>.
 </div>
-{% for plan in object_list %}
+        {% for plan in object_list %}
 <section class="post">
     <header class="post-header">
         <h2 class="post-title"><a href="{{ plan.id }}">{{ plan.entidad }}</a></h2>
@@ -22,13 +30,13 @@
         </p>
     </header>
 </section>
-{% endfor %}
-{% else %}
+        {% endfor %}
+    {% else %}
 <section class="post">
     <h1 class="post-title">
         Hasta ahora no se ha publicado ningún Plan Institucional de Implementación de Software Libre y Estándares Abiertos en el
         sitio Web de la <a href="https://agetic.gob.bo">AGETIC</a>.
     </h1>
 </section>
-{% endif %}
+    {% endif %}
 {% endblock %}
