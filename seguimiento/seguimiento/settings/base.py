@@ -1,4 +1,5 @@
 import os
+from datetime import date
 
 SITE_ID = 1
 
@@ -21,7 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.flatpages',
     'convocatorias',
-    'planes'
+    'planes',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -85,3 +87,5 @@ MEDIA_URL = '/files/'
 MEDIA_ROOT = 'files'
 
 TWITTER_CARD_SITE = '@nnrcschmdt'
+
+PLAZO_PLANES = date(2019, 1, 12)
