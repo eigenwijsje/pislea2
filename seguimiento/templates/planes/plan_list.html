@@ -3,7 +3,7 @@
 {% load twitter_cards %}
 
 {% block twitter_cards %}
-    {% with title="Planes de Implementación de Software Libre y Estándares Abiertos" description="Hasta ahora no se ha publicado ningún Plan Institucional de Implementación de Software Libre y Estándares Abiertos en el sitio Web de la AGETIC" %}
+    {% with title="Planes de Implementación de Software Libre y Estándares Abiertos" description="Este es un listado de los Planes Institucionales de Implementación de Software Libre y Estándares Abiertos publicados en el sitio Web de la AGETIC" %}
         {% summary_card title=title description=description %}
     {% endwith %}
 {% endblock %}
@@ -17,20 +17,42 @@
 {% block content %}
     {% if object_list %}
 <div class="content">
-    Este es un listado de Planes Institucionales de Implementación de Software Libre y Estándares Abiertos publicados en el
-    sitio Web de la <a href="https://agetic.gob.bo">AGETIC</a>.
+    Este es un listado de los {{ object_list.count}} Planes Institucionales de Implementación de Software Libre y Estándares
+    Abiertos publicados en el
+    <a href="https://digital.gob.bo/en/planes/plan-de-implementacion-de-software-libre-y-estandares-abiertos-2017-2025">sitio Web</a>
+    de la <a href="https://agetic.gob.bo">AGETIC</a>.
 </div>
         {% for plan in object_list %}
 <section class="post">
     <header class="post-header">
         <h2 class="post-title"><a href="{{ plan.id }}">{{ plan.entidad }}</a></h2>
         <p>
-            Publicado el {{ plan.publicado|date }}
+            Recibido por la AGETIC el {{ plan.recibido }},
+            {% if plan.días_de_retraso %}
+            con <b>{{ plan.días_de_retraso }}</b>
+            {% else %}
+            dentro del plazo,
+            {% endif %}
+            y publicado el {{ plan.publicado }}, <b>{{ plan.días_después }}</b>.
             {% if plan.revisado %}, revisado el {{ plan.revisado|date }}{% endif %}
         </p>
     </header>
 </section>
         {% endfor %}
+
+        {% if is_paginated %}
+        <div class="pure-button-group" role="group" style="text-align: center;">
+            {% for i in paginator.page_range %}
+            <button class="pure-button">
+                {% if page_obj.number == i %}
+                <span>{{ i }}</span>
+                {% else %}
+                <a href="?page={{ i }}">{{ i }}</a>
+                {% endif %}
+            </button>
+            {% endfor %}
+        </div>
+        {% endif %}
     {% else %}
 <section class="post">
     <h1 class="post-title">

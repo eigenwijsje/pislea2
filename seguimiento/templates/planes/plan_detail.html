@@ -1,6 +1,12 @@
 {% extends "planes/plan_base.html" %}
 
-{% block title %}Plan Institucional de Implementación de Software Libre y Estándares Abiertos: {{ plan.entidad }}{% endblock %}
+{% block title %}{{ plan.entidad }} &mdash; Plan Institucional de Implementación de Software Libre y Estándares Abiertos{% endblock %}
+
+{% load twitter_cards %}
+
+{% block twitter_cards %}
+    {% summary_card title='Plan de Implementación de Software Libre y Estándares Abiertos' description=card_description %}
+{% endblock %}
 
 {% block content-header %}
 <h2 class="content-subhead"><a href="/planes/">Planes de Implementación</a></h2>
@@ -14,27 +20,31 @@
         <header class="post-header">
             <h2 class="post-title">{{ plan.entidad }}</h2>
         </header>
-
         <div class="post-description">
             <p>
-                {{ plan.entidad }} ha publicado su Plan Institucional de Implementación de Software Libre y Estándares Abiertos
-                el {{ plan.publicado }}.
+                El Plan Institucional de Implementación de Software Libre y Estándares Abiertos
+                fue recibido por la AGETIC el {{ plan.recibido }},
+                {% if plan.días_de_retraso %}
+                    con <b>{{ plan.días_de_retraso }}</b>
+                {% else %}
+                    dentro del plazo
+                {% endif %}
+                y fue publicado el {{ plan.publicado }}, <b>{{ plan.días_después }}</b>.
             </p>
-    {% if plan.estatus == 5 %}
-            <p>Este plan ha sido revisado el {{ plan.revisado|date }}.</p>
+    {% if plan.estatus == 2 %}
+            <p>Este plan ha sido revisado por la
+                <a href="http://www.softwarelibre.org.bo/">Comunidad de Software Libre Bolivia</a> el {{ plan.revisado|date }}.
+            </p>
         {% if plan.comentarios %}
             <p>{{ plan.comentarios }}</p>
         {% endif %}
     {% else %}
-            <p>Este plan no ha sido revisado todavía.</p>
-    {% endif %}
-
-    {% if plan.documento %}
-            <p><a href="/files/{{ plan.documento }}">Documento</a>.</p>
+            <p>Este plan no ha sido revisado por la
+                <a href="http://www.softwarelibre.org.bo/">Comunidad de Software Libre Bolivia</a> todavía.</p>
     {% endif %}
 
     {% if plan.fuente %}
-            <p>Fuente: <a href="{{ plan.fuente }}">{{ plan.fuente }}</a></p>
+            <p>Documento: <a href="{{ plan.fuente }}">{{ plan.entidad }} &mdash; Plan Institucional de Implementación de Software Libre y Estándares Abiertos</a></p>
     {% endif %}
         </div>
     </section>
