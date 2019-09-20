@@ -89,3 +89,8 @@ MEDIA_ROOT = 'files'
 TWITTER_CARD_SITE = '@nnrcschmdt'
 
 PLAZO_PLANES = date(2019, 1, 12)
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 100
+}
