@@ -16,7 +16,7 @@ class Convocatoria(models.Model):
     )
     departamento = models.CharField("Departamento", max_length=16)
     entidad = models.CharField("Entidad", max_length=255)
-    slug = models.SlugField("CUCE", unique=True)
+    slug = models.SlugField("CUCE", unique=True, primary_key=True)
     objeto = models.CharField("Objeto", max_length=512)
     enlace = models.URLField(max_length=512)
     modalidad = models.CharField("Modalidad", max_length=64)
