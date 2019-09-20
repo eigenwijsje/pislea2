@@ -5,10 +5,12 @@ from django.contrib.flatpages.sitemaps import FlatPageSitemap
 from django.contrib.sitemaps import views
 from django.urls import path, include
 from django.views.decorators.cache import cache_page
+from rest_framework.routers import DefaultRouter
 
 from convocatorias.feeds import ÚltimasConvocatoriasFeed
 from convocatorias.sitemaps import ConvocatoriaSitemap
 from convocatorias.views import ConvocatoriaDetailView, ConvocatoriaListView
+from convocatorias.views import ConvocatoriaViewset
 from planes.views import PlanDetailView, PlanListView
 from .sitemaps import StaticViewSitemap
 from .views import FechasPasadasView, HomepageView, PróximaFechaView
@@ -20,6 +22,12 @@ sitemaps = {
     'flatpages': FlatPageSitemap,
     'static': StaticViewSitemap,
 }
+
+router = DefaultRouter()
+router.register('convocatorias', ConvocatoriaViewset)
+
+API_TITLE = 'Convocatorias PISLEA API'
+API_DESCRIPTION = 'API para consultar las convocatorias contaminadas y ejemplares'
 
 urlpatterns = [
                   path('admin/', admin.site.urls),
@@ -34,5 +42,6 @@ urlpatterns = [
                   path('', HomepageView.as_view(), name="homepage"),
                   path('sitemap.xml', cache_page(86400)(views.index), {'sitemaps': sitemaps}),
                   path('sitemap-<section>.xml', cache_page(86400)(views.sitemap), {'sitemaps': sitemaps},
-                       name='django.contrib.sitemaps.views.sitemap')
+                       name='django.contrib.sitemaps.views.sitemap'),
+                  path('api/', include(router.urls)),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
