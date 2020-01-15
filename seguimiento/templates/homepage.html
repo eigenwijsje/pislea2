@@ -227,10 +227,13 @@
 <div class="header">
     <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><div class="pure-menu-link">Inicio</div></li>
+            <li class="pure-menu-item">
+                <div class="pure-menu-link">Inicio</div>
+            </li>
         </ul>
         <ul class="pure-menu-list">
-            <li class="pure-menu-item"><a href="/convocatorias/?ejemplares=true" class="pure-menu-link">Convocatorias Ejemplares</a></li>
+            <li class="pure-menu-item"><a href="/convocatorias/?ejemplares=true" class="pure-menu-link">Convocatorias
+                Ejemplares</a></li>
         </ul>
         <ul class="pure-menu-list">
             <li class="pure-menu-item"><a href="/convocatorias" class="pure-menu-link">Convocatorias Contaminadas</a></li>
@@ -250,24 +253,18 @@
 <div class="splash-container">
     <div class="splash">
         <p class="splash-head">El <a
-                href="https://www.agetic.gob.bo/#/plan-de-implementacion-de-software-libre-y-estandares-abiertos">Plan
-            de Implementación de Software Libre y Estándares Abiertos</a> está en vigencia hace <b>{{ hace_dias }}</b>
-            días</p>
+                href="https://www.agetic.gob.bo/#/plan-de-implementacion-de-software-libre-y-estandares-abiertos">Plan de
+            Implementación de Software Libre y Estándares Abiertos</a> está en vigencia hace <b>{{ años }}</b> años,
+            <b>{{ meses }}</b> meses y <b>{{ dias }}</b> días</p>
         <p class="splash-subhead">
-            {% if hace_dias2 == 0 %}
-            <b>HOY</b>
-            {% elif hace_dias2 == 1 %}
-            <b>AYER</b>
-            {% else %}
-            Hace <b>{{ hace_dias2 }} días</b>
-            {% endif %}
+            Hace
+            {% if años2 == 0 %}{% elif años2 == 1 %}<b>un</b> año{% else %}<b>{{ años2 }}</b> años,{% endif %}
+            {% if meses2 != 0 %}<b>{{ meses2 }}</b> meses,{% endif %} y <b>{{ días2 }}</b> días</b>
             {{ quien|safe }} {{ que|safe }}.
         </p>
         <p class="splash-subhead">
             {% if publicados == 0 %}
             <b>Ningún</b> plan ha sido publicado hasta hoy.
-            {% elif publicados == 1 %}
-            <b>Un</b> <a href="/planes">plan</a> ha sido publicado hasta hoy
             {% else %}
             {{ publicados }} <a href="/planes">planes</a> han sido publicados hasta hoy.
             {% endif %}

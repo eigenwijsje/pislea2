@@ -15,8 +15,10 @@ class HomepageView(TemplateView):
         with open('fechas.json', 'r') as f:
             fechas = json.loads(f.read())
 
-        context['hace_dias'] = (datetime.today() - datetime(2017, 7, 11)).days
-        context['hace_dias2'] = (datetime.today() - datetime(2019, 1, 12)).days
+        context['años'], dias = divmod((datetime.today() - datetime(2017, 7, 11)).days, 365)
+        context['meses'], context['dias'] = divmod(dias, 30)
+        context['años2'], días2 = divmod((datetime.today() - datetime(2019, 1, 12)).days, 365)
+        context['meses2'], context['días2'] = divmod(días2, 30)
         context['quien'] = fechas[4]['quien']
         context['que'] = fechas[4]['que']
         context['publicados'] = Plan.objects.all().count()
